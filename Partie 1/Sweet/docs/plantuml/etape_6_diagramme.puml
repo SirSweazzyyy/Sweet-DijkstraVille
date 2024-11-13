@@ -1,0 +1,81 @@
+@startuml
+
+class ExceptionFonction {
+  - {static} serialVersionUID: long {ReadOnly}
+  + ExceptionFonction(String):
+}
+class Fonction {
+  - expression: Expression
+  + Fonction(String):
+  + valeurFonction(int): double
+}
+class Suite {
+  - chaineSuite: String
+  # Suite(String):
+  + toString(): String
+  + calculeEtAffiche(int): void
+  + doubleVersTableau(double): double[]
+}
+class SuiteExplicite extends Suite {
+  + SuiteExplicite(String, Fonction):
+}
+abstract class SuiteRecurrente extends Suite {
+  - valPremiersTermes: double[]
+  # SuiteRecurrente(String, double[]):
+  + calculeEtAffiche(int): void
+}
+
+class SuiteLineaire extends SuiteRecurrente {
+  - chaineSuite : String
+  - valPremiersTermes : double[]
+  - coefficients : double[]
+  + calculeEtAffiche(int): void
+  # SuiteLineaire(String, double[], double[])
+}
+
+class SuiteGeometrique extends SuiteLineaire {
+  - chaineSuite : String
+  - valPremiersTermes : double[]
+  - raison : double
+  # SuiteLineaire(String, double[], double)
+  + calculeEtAffiche(int): void
+}
+
+class SuiteArithmetique extends SuiteRecurrente {
+  - chaineSuite : String
+  - valPremiersTermes : double[]
+  - raisonArithmetique : double
+  # SuiteLineaire(String, double[], double)
+}
+
+
+class SuiteArithmeticoGeometrique extends SuiteRecurrente {
+  - raisonGeometrique: double
+  - raisonArithmetique: double
+  # SuiteArithmeticoGeometrique(double, double):
+}
+
+class SuiteLogistique extends SuiteRecurrente {
+  - chaineSuite: String
+  - valPremierTerme: double
+  - valA: double
+  # SuiteLogistique(String, double, double):
+  + calculeEtAffiche(int): void
+}
+
+class SuiteFibonacci extends SuiteLineaire {
+  # SuiteFibonacci():
+}
+
+class EnsembleSuites {
+  - suites: ArrayList<Suite>
+  + EnsembleSuites()
+  + ajouterSuite(Suite)
+  + getSuite(int): Suite
+  + nombreDeSuites(): int
+  + afficherToutesLesSuites(): void
+}
+
+SuiteExplicite -> Fonction: fonction
+
+@enduml

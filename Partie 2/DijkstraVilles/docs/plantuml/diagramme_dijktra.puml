@@ -1,0 +1,28 @@
+@startuml
+
+interface ICalculateurPlusCourtChemin {
+    + plusCourtChemin(ArrayList<Ville>, Ville, Ville) : ArrayList<Ville>
+}
+
+class CalculateurPlusCourtChemin {
+    + plusCourtChemin(ArrayList<Ville>, Ville, Ville) : ArrayList<Ville>
+}
+
+class Sommet {
+    - ville : Ville
+    - cout : int
+    - predecesseur : Sommet
+    # Sommet(Ville)
+    + {static} getSommet(Sommet[*], Ville) : Sommet
+    + {static} getSommetCoutMin(Sommet[*]) : Sommet
+    + {static} getSommetsVoisins(Sommet[*], Ville) : (Sommet[*])
+    + setCout(int)
+    + getVille() : Ville
+    + getPredecesseur() : Sommet
+    + getCout() : int
+    + setPredecesseur(Sommet)
+}
+
+CalculateurPlusCourtChemin .up.|> ICalculateurPlusCourtChemin
+
+@enduml

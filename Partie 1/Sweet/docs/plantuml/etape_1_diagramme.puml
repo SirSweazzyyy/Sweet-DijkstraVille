@@ -1,0 +1,9 @@
+@startuml
+class Suite {
+  - chaineSuite: String
+  # Suite(String):
+  + toString(): String
+  + calculeEtAffiche(int): void
+  + doubleVersTableau(double): double[]
+}
+@enduml

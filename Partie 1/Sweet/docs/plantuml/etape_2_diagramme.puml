@@ -1,0 +1,25 @@
+@startuml
+
+class ExceptionFonction {
+  - {static} serialVersionUID: long {ReadOnly}
+  + ExceptionFonction(String):
+}
+class Fonction {
+  - expression: Expression
+  + Fonction(String):
+  + valeurFonction(int): double
+}
+class Suite {
+  - chaineSuite: String
+  # Suite(String):
+  + toString(): String
+  + calculeEtAffiche(int): void
+  + doubleVersTableau(double): double[]
+}
+class SuiteExplicite extends Suite {
+  + SuiteExplicite(String, Fonction):
+}
+
+SuiteExplicite -> Fonction: fonction
+
+@enduml
